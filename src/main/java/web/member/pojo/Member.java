@@ -21,7 +21,7 @@ public class Member extends Core {
 	private String password;
 	private String nickname;
 	private Boolean pass;
-	@Column(name = "ROID_ID")
+	@Column(name = "ROLE_ID")
 	private Integer roleId;
 	private String creator;
 	@Column(name = "CREATED_DATE")
