@@ -1,10 +1,11 @@
 package app;
 
 import core.util.HibernateUtil;
+import web.emp.entity.Dept;
+import web.emp.entity.Emp;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import web.emp.pojo.Dept;
-import web.emp.pojo.Emp;
 
 import java.util.List;
 

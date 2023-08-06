@@ -8,8 +8,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import core.util.HibernateUtil;
+import web.member.entity.Member;
+
 import org.hibernate.query.Query;
-import web.member.pojo.Member;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;

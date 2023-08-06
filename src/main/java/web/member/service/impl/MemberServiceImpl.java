@@ -4,7 +4,7 @@ import java.util.List;
 
 import web.member.dao.MemberDao;
 import web.member.dao.impl.MemberDaoImpl;
-import web.member.pojo.Member;
+import web.member.entity.Member;
 import web.member.service.MemberService;
 
 public class MemberServiceImpl implements MemberService {

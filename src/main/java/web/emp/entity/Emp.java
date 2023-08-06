@@ -1,4 +1,4 @@
-package web.emp.pojo;
+package web.emp.entity;
 
 import lombok.Data;
 

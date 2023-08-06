@@ -1,10 +1,5 @@
 package web.member.dao.impl;
 
-import static core.util.CommonUtil.getConnection;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -13,8 +8,9 @@ import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+
 import web.member.dao.MemberDao;
-import web.member.pojo.Member;
+import web.member.entity.Member;
 
 public class MemberDaoImpl implements MemberDao {
 
@@ -60,16 +56,16 @@ public class MemberDaoImpl implements MemberDao {
 	public int update(Member member) {
 		final StringBuilder hql = new StringBuilder()
 			.append("UPDATE Member SET ");
-		int offset = 0;
+//		int offset = 0;
 		final String password = member.getPassword();
 		if (password != null && !password.isEmpty()) {
 			hql.append("password = :password,");
 		}
 		hql.append("nickname = :nickname,")
 			.append("pass = :pass,")
-			.append("roleId = :roleId,")
+			.append("role_Id = :roleId,")
 			.append("updater = :updater,")
-			.append("lastUpdatedDate = NOW() ")
+			.append("last_Updated_Date = NOW() ")
 			.append("WHERE username = :username");
 
 		Query<?> query = getSession().createQuery(hql.toString());
@@ -80,7 +76,7 @@ public class MemberDaoImpl implements MemberDao {
 		return query
 				.setParameter("nickname", member.getNickname())
 				.setParameter("pass", member.getPass())
-				.setParameter("roldId", member.getRoleId())
+				.setParameter("roleId", member.getRoleId())
 				.setParameter("updater", member.getUpdater())
 				.setParameter("username", member.getUsername())
 				.executeUpdate();
@@ -172,7 +168,7 @@ public class MemberDaoImpl implements MemberDao {
 		CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
 		CriteriaQuery<Member> criteriaQuery = criteriaBuilder.createQuery(Member.class);
 		Root<Member> root = criteriaQuery.from(Member.class);
-		criteriaQuery.where(criteriaBuilder.equal(root.get("user"), username));
+		criteriaQuery.where(criteriaBuilder.equal(root.get("username"), username));
 		return session
 				.createQuery(criteriaQuery)
 				.uniqueResult();
